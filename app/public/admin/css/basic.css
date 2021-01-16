@@ -1,0 +1,252 @@
+ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.aside h4{
+    position: relative;
+	margin-top: 0px;
+	font-size: 15px;
+	cursor: pointer;
+	
+	position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;    
+    color: #fff;
+    background-color: #428bca;
+    border-color: #428bca;
+    
+    border-bottom: 2px solid #3a82bf;
+}
+.aside h4 .nav_open{
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    right: 10px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: none;
+    border-bottom: 5px solid #eee;
+}
+.aside h4 .nav_close{
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    right: 10px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #eee;
+    border-bottom: none;
+}
+
+.aside .list-group-item:first-child{
+
+	border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.aside .list-group-item:last-child{
+	
+	border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+
+
+.aside .list-group-item a{
+	
+	display: inline-block;
+	width: 100%;
+	text-indent: 10px;
+	color: #555
+}
+
+
+
+.navbar-header{
+    width: 180px;
+    text-align: center;
+}
+.navbar-inverse .navbar-nav>li>a{
+    color:#f9f9f9;
+}
+.navbar-inverse{
+    background:#46473F;
+}
+
+
+table .th{
+	
+	background: #EEEEEE;
+}
+
+ .input-form li{
+    margin: 5px 0px;
+}
+
+.pic{
+    max-width: 100px;
+
+}
+
+input[type=file]{
+ 	display: inline !important;
+
+}
+
+
+.col-sm-2,.col-sm-10{
+	padding-left: 0px;
+}
+
+
+.navbar{
+	border-radius: 0px;
+}
+/*数量*/
+.table .text-center{
+    position: relative;
+}
+.table .text-center span{
+    display: inline-block;
+    width: 100%;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+}
+.table .text-center span input{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 60px;
+}
+.table .th th{
+   white-space: nowrap!important;
+}
+.table  td{
+    word-break: break-all;
+ }
+ .table  .td{
+    white-space: nowrap;
+ }
+.input-form li{
+    margin: 6px 0;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    color: #666;
+}
+.input{
+    width: 600px;
+}
+.form-title{
+    display: inline-block;
+    width: 80px;
+
+}
+/* 商品详情页面 */
+.nav-tabs{
+    background-color: #eee;
+}
+.goods_content,.news_content{
+    border: 1px solid #eee;
+}
+.tab-content{
+    position: relative;
+    top: -24px;
+    background-color: #fff;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+.goods_content_btn{
+    position: relative;
+    left: 20px;
+    bottom: 20px;
+}
+/* 图片列表 */
+.img-list{
+    width: 20%;
+    position: relative;
+    float: left;
+    padding: 0!important;
+    margin: 10px 10px 0 10px!important;
+    text-align: center;
+}
+.img-list img{
+    width: 100%;
+}
+#filePicker{
+    width: 100px;
+}
+#filePicker{
+    margin: 10px auto 0;
+}
+#filePicker div:nth-child(2) {
+    width: 100% !important;
+    height: 100% !important;
+}
+.progress_active{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+}
+.progress_bar {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50);
+    width: 100%;
+    height: 10px;
+    border: 1px solid #3a82bf;
+    border-radius: 5px;
+}
+.progress_bgc{
+    width: 0;
+    height: 100%;
+    background-color: rgba(58,130,191,.5);
+}
+.upload_message{
+    /* transform: translateY(-100%); */
+    /* color: #ccc; */
+    font-weight: 700;
+    font-size: 18px;
+}
+#goods_type_attribute span {
+    display: inline-block;
+    width: 80px;
+}
+.goods_image_delete{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: rgba(58,130,191,.5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+}
+.goods_image_delete span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#fileList li{
+    border-bottom: none!important;
+}
+#fileList_uploader{
+    padding-top: 10px;
+}

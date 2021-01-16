@@ -1,0 +1,46 @@
+<%- include ../public/page_header.html %>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+角色授权
+</div>
+    <div class="panel-body">
+
+        <form action="/admin/role/doAuth" method="POST">
+
+            <input type="hidden" name="_csrf" value="<%=csrf%>"/>
+
+            <input type="hidden" name="role_id" value="<%=role_id%>"/>
+
+            <table class="table " style="background-color: rgb(221,221,221);">
+                <%for(let i = 0; i < list.length; i++){%>
+                <tr>
+                <td style="background-color: rgb(221,221,221);">                                   
+                <label>
+                <input type="checkbox" name="access_node[]" value="<%=list[i]._id%>" 
+                <%if(list[i].checked){%>checked<%}%>/>
+                <%=list[i].module_name%>
+                </label>
+                </td>
+                <%for(let j = 0; j < list[i].items.length; j++){%>
+                <td>
+                    <label>
+                        <input type="checkbox" name="access_node[]" value="<%=list[i].items[j]._id%>"
+                        <%if(list[i].items[j].checked){%>checked<%}%>/>
+                        <%=list[i].items[j].action_name%>
+                    </label>
+                </td>
+                <%}%>
+                </tr>
+                <%}%>
+            </table>
+
+            <button type="submit" class="btn btn-primary">提交</button>
+
+        </form>
+
+    </div>
+</div>
+
+    </body>
+</html>

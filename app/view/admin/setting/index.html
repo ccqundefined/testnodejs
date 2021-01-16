@@ -1,0 +1,35 @@
+<%- include ../public/page_header.html %>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+<h4>商店设置</h4>
+</div>
+<div class="panel-body">
+    <div class="table-responsive input-form">
+        <form action="/admin/setting/doEdit?_csrf=<%=csrf%>" method="POST" enctype="multipart/form-data">
+            <ul class="form-input">
+                <li><span class="form-title">网站标题:</span> <input type="text" name="site_title" value="<%=list.site_title%>" class="title"></li>
+                <li>
+                    <span class="form-title">网站logo:</span> <input type="file" name="site_logo" class="title"><br>
+                    <span class="form-title"></span><img src="<%=list.site_logo%>" class="pic">
+                </li>
+                <li><span class="form-title">网站关键词:</span> <input type="text" name="site_keywords" value="<%=list.site_keywords%>" class="title"></li>
+                <li><span class="form-title">网站描述:</span> <textarea name="site_description" id="" cols="50" rows="2"><%=list.site_description%></textarea></li>
+                <li>
+                    <span class="form-title">默认图片:</span> <input type="file" name="no_picture" class="title"><br>
+                    <span class="form-title"></span> <img src="<%=list.no_picture%>" class="pic"></li>
+                <li><span class="form-title">备案信息:</span> <input type="text" name="site_icp" value="<%=list.site_icp%>" class="title"></li>
+                <li><span class="form-title">网站电话:</span> <input type="text" name="site_tel" value="<%=list.site_tel%>" class="title"></li>
+                <li><span class="form-title">搜索关键词:</span> <input type="text" name="search_keywords" value="<%=list.search_keywords%>" class="title"></li>
+                <li><span class="form-title">统计代码:</span> <input type="text" name="tongji_code" value="<%=list.tongji_code%>" class="title"></li>
+                
+            </ul>
+            <button type="submit" class="btn btn-success">提交</button>
+        </form>
+    </div>
+</div>
+
+</div>
+
+    </body>
+</html>

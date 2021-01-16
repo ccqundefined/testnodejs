@@ -1,0 +1,88 @@
+<%- include ../public/page_header.html %>
+<script src="/public/admin/jqPaginator/jq-paginator.min.js"></script>
+<div class="panel panel-default">
+    <div class="panel-heading">
+    <h4><span>网站导航</span><a class="btn btn-primary pull-right" href="/admin/nav/add">增加导航</a></h4>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr class="th">
+                <th>名称</th>
+                <th>关联商品</th>
+                <th>跳转地址</th>
+                <th>位置</th>
+                <th class="text-center">排序</th>
+                <th class="text-center">状态</th>
+                <th class="text-center">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%for(let i = 0; i < list.length; i++){%>
+                <tr>
+                    <td><%=list[i].title%></td>
+                    <td>
+                        <%=list[i].relation%>   
+                    </td>
+                    <td><%=list[i].link%></td>
+                    <td class="td">
+                        <%if(list[i].position == 1){%>
+                        顶部
+                        <%}else if(list[i].position == 2){%>
+                        中间
+                        <%}else if(list[i].position == 3){%>
+                            底部
+                        <%}%>       
+                    </td>
+                    <td class="text-center td">
+                        <span onclick="app.editNum(this,'Nav','sort','<%=list[i]._id%>')"><%=list[i].sort%></span>
+                    </td>
+                    <td class="text-center"><%if(list[i].status == 1){%>
+                        <img src="/public/admin/images/yes.gif" 
+                        onclick="app.changeStatus(this,'Nav','status','<%=list[i]._id%>')" alt=""> 
+                    <%}else{%>
+                        <img src="/public/admin/images/no.gif" 
+                        onclick="app.changeStatus(this,'Nav','status','<%=list[i]._id%>')" alt="">
+                        <%}%>
+                    </td>
+                    <td class="text-center td">
+                        <a href="/admin/nav/edit?id=<%=list[i]._id%>">编辑</a>
+                        <a class="delete" href="/admin/delete?model=Nav&id=<%=list[i]._id%>">删除</a>
+                    </td>
+                </tr>
+            <%}%>    
+        </tbody>
+    </table>
+</div>
+
+</div>
+
+<ul id="page" class="pagination pull-right">
+    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+
+    ...
+  </ul>
+  
+<script>
+    $.jqPaginator('#page', {
+    totalPages: <%=totalPages%>,
+    visiblePages: 3,
+    currentPage: <%=page%>,
+    first: '<li class="first"><a href="javascript:void(0);">首页</a></li>',
+    prev: '<li class="prev"><a href="javascript:void(0);">上一页</a></li>',
+    next: '<li class="next"><a href="javascript:void(0);">下一页</a></li>',
+    last: '<li class="last"><a href="javascript:void(0);">最后一页</a></li>',
+    page: '<li class="page"><a href="javascript:void(0);">{{page}}</a></li>',
+
+   //num为当前页码，type为当前状态，分为“init”（初始化），“change”（点击分页）
+    onPageChange: function (num, type) {
+        console.log('当前第'+num+'页',type)
+        if(type == 'change'){
+            location.href = '/admin/nav?page='+num;
+        }
+    }
+});
+</script>
+    </body>
+</html>

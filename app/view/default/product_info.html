@@ -1,0 +1,421 @@
+<% include  ./public/header.html%>
+<!--end header -->
+
+<!-- start banner_x -->
+<% include  ./public/banner.html%>
+<!-- end banner_x -->
+
+	
+<!-- xiangqing -->
+<div class="jieshao mt20 w">
+	<div class="left fl">
+		
+
+		<div class="swiper-container">
+			<div class="swiper-wrapper" id="swiper-wrapper">
+				<%for(var i = 0; i < goodsImageResult.length; i++){%>
+				<div class="swiper-slide">
+
+						<img src="<%=goodsImageResult[i].img_url%>" style="width: 100%;">
+				</div>
+				<%}%>			
+			</div>
+
+			<div class="swiper-pagination"></div>
+
+			<!-- Add Arrows -->
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+	
+		</div>
+	
+	
+	
+	</div>
+	<div class="right fr">
+		<div class="h3 ml20 mt20"><%=productInfo.title%></div>
+		<div class="jianjie mr40 ml20 mt10"><%=productInfo.sub_title%></div>
+		<div class="jiage ml20 mt10"><%=productInfo.shop_price%>元</div>
+		<%if(relationGoods.length> 0){%>
+			<div class="ft20 ml20 mt20">选择版本</div>
+		<%}%>
+		<div class="xzbb ml20 mt10">
+			<%for(var i = 0; i < relationGoods.length; i++){%>
+			<div class="banben fl <%if(productInfo._id.toString()==relationGoods[i]._id.toString()){%>active<%}%>">
+				<a href="/pinfo?id=<%=relationGoods[i]._id%>">
+					<span>全网通 <%=relationGoods[i].goods_version%> </span>
+					<span><%=relationGoods[i].shop_price%>元</span>
+				</a>
+			</div>
+			<%}%>
+			<div class="clear"></div>
+		</div>
+		<br>
+		<%if(colorArr.length > 0){%>
+		<div class="ft20 ml20 mt20 clear">选择颜色</div>
+		<%}%>
+		
+		<div class="xzbb ml20 mt10 clearfix" id="color_list">
+			<%for(var i = 0; i < colorArr.length; i++){%>
+				<div class="banben fl" goods_id="<%=productInfo._id%>" goods_color="<%=colorArr[i]._id%>">
+					<a>
+						<span class="yuandian" style="background: <%=colorArr[i].color_value%>;"></span>
+						<span class="yanse"><%=colorArr[i].color_name%></span>
+					</a>
+				</div>
+			<%}%>
+		</div>
+		
+		<div class="xqxq mt20 ml20">
+			<div class="top1 mt10">
+				<div class="left1 fl">小米6 全网通版 6GB内存 64GB 亮黑色</div>
+				<div class="right1 fr">2499.00元</div>
+				<div class="clear"></div>
+			</div>
+			<div class="bot mt20 ft20 ftbc">总计：2499元</div>
+		</div>
+		<div class="xiadan ml20 mt20">					
+				<input class="jrgwc" type="button" name="jrgwc" value="加入购物车" />
+
+				
+			
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+
+
+<style>
+
+
+/*商品详情*/
+	.container{
+		width: 1226px;
+		
+		margin:0 auto;
+	}
+/*详情左侧*/
+	.c_left{
+
+		width: 236px;
+		float: left;
+		margin-right: 20px;
+		margin-top: 119px;
+		border:1px solid #eee;
+	}
+
+	.c_left h2{
+		background: #eee;
+		height: 44px;
+		line-height: 44px;
+
+		font-size: 20px;
+
+		text-align: center;
+	}
+
+	.c_left .item{
+		width: 216px;
+		text-align: center;
+		margin: 0 auto;
+		padding:10px;
+
+	}
+
+	.c_left .item img{
+		width:200px;
+
+	}
+
+	.c_left .item p{
+		font-size: 14px;
+	}
+
+
+
+
+/*详情右侧*/
+	.c_right{
+
+		width: 966px;
+		float: right;
+		
+	}
+
+	.c_right .detail_list{
+		width: 100%;
+		border-top:1px solid #eee;
+		border-bottom: 1px solid #eee;
+		
+	}
+	.c_right .detail_list li{
+		/* width: 190px; */
+		height:60px;
+		line-height:60px;
+		display: inline-block;
+		text-align: center;			
+		cursor: pointer;
+		
+	}
+
+	.c_right .detail_list li.active{
+		color:red;
+	}
+
+	.c_right .detail_list li::after{
+		color: #DCDCDC;
+		content: '/';
+
+		padding:0 20px;
+	}
+
+	.c_right .detail_list li:last-child::after{
+		content: '';
+	}
+	   
+
+	.c_right .detail_info{
+
+
+		margin: 0 auto;
+
+		padding:10px;
+	}
+
+	.c_right .detail_info .detail_info_item{
+		display: none;
+	}
+
+	.detail_info .detail_info_item.active{
+		display: block;
+	}
+
+
+	.detail_info .detail_info_item .row{
+
+		padding:20px 0px;
+		
+
+	}
+	.detail_info .detail_info_item .span5{
+
+			width: 200px;
+			float: left;
+			
+	}
+
+	.detail_info .detail_info_item .span15{
+		width: 740px;
+		float: left;
+		line-height: 2;
+	}
+
+
+/*商品评论列表*/
+
+	.comment_list li{
+		margin:20px 0px;
+
+		border-bottom: 1px solid #eee;
+
+		padding:10px;
+
+		font-size: 14px;
+		line-height: 2;
+	}
+
+	.jieshao{
+		height: 600px;
+	}
+</style>
+
+<script>	
+	$(function(){
+		$('.detail_info .detail_info_item:first').addClass('active');
+		$('.detail_list li:first').addClass('active');				
+		$('.detail_list li').click(function(){
+			var index=$(this).index();		
+			$(this).addClass('active').siblings().removeClass('active');
+			
+			$('.detail_info .detail_info_item').removeClass('active').eq(index).addClass('active');
+			
+		})
+
+	})	
+</script>
+<div class="container clearfix">
+
+
+	<div class="c_left">
+
+			<h2>看了又看</h2>
+
+			<div class="item">	
+
+					<a target="_blank" href="#">
+						
+						<img src="//img10.360buyimg.com/N1/jfs/t24550/324/210570328/559386/cc08975f/5b2910bbNfaceb0b4.jpg" />
+						
+						<p class="price recommendLookPrice4183081">￥31.90</p>							
+						
+						<p>三利 纯棉A类标准简约素雅大浴巾 70×140cm 男女同款 柔软舒适吸水裹身巾 豆绿</p>
+											
+					</a>
+
+
+			</div>
+			<div class="item">	
+
+					<a target="_blank" href="#">
+						
+						<img src="//img10.360buyimg.com/N1/jfs/t24550/324/210570328/559386/cc08975f/5b2910bbNfaceb0b4.jpg" />
+						
+						<p class="price recommendLookPrice4183081">￥31.90</p>							
+						
+						<p>三利 纯棉A类标准简约素雅大浴巾 70×140cm 男女同款 柔软舒适吸水裹身巾 豆绿</p>
+											
+					</a>
+
+
+			</div>
+			<div class="item">	
+
+					<a target="_blank" href="#">
+						
+						<img src="//img10.360buyimg.com/N1/jfs/t24550/324/210570328/559386/cc08975f/5b2910bbNfaceb0b4.jpg" />
+						
+						<p class="price recommendLookPrice4183081">￥31.90</p>							
+						
+						<p>三利 纯棉A类标准简约素雅大浴巾 70×140cm 男女同款 柔软舒适吸水裹身巾 豆绿</p>
+											
+					</a>
+
+
+			</div>
+	</div>
+
+
+	<div class="c_right">
+				 <ul class="detail_list clearfix">			
+		
+					<li class="">详情描述</li>			
+		
+					<li class="">规格参数</li>
+		
+					<li class="">用户评价</li>
+				</ul>
+		
+		
+				<div class="detail_info">
+		
+					<div class="detail_info_item">
+							<%-productInfo.goods_content%>
+					</div>
+					<div class="detail_info_item">
+						<ul>
+		
+							<li class="row clearfix">
+		
+								<div class="span5">
+		
+										<h2>充电与电池</h2>
+								</div>
+		
+								<div class="span15">
+		
+										有线充电支持 QC 4.0+ 快充<br>
+										USB Type-C 双面充电接口<br>
+										内置电池，免更换<br>
+										标配 18W QC3.0 充电器   &amp;   附赠 10W 无线充电器
+								</div>
+		
+		
+							</li>
+		
+		
+							<li class="row clearfix">
+		
+									<div class="span5">
+			
+											<h2>充电与电池</h2>
+									</div>
+			
+									<div class="span15">
+			
+											有线充电支持 QC 4.0+ 快充<br>
+											USB Type-C 双面充电接口<br>
+											内置电池，免更换<br>
+											标配 18W QC3.0 充电器   &amp;   附赠 10W 无线充电器
+									</div>
+			
+			
+								</li>
+							
+						</ul>
+					</div>
+		
+		
+					<div class="detail_info_item">
+						<ul class="comment_list">
+							<li>
+									<div>
+											<img src="//static.i360mall.com/mall/images/eval-stars.png">
+									</div>
+									<p>这已经是第六部了，一如既往地好用。美中不足得是，尾插和数据线的链接口，用过一段时间，就会有充电接触不良的问题，希望厂家将来有改进。</p>
+		
+									<p class="eval-order-info"> <span class="eval-time">2018-11-18 14:00:35</span><span>月岩白</span><span>6GB+64GB</span><span></span></p>
+		
+							</li>
+							<li>
+									<div>
+											<img src="//static.i360mall.com/mall/images/eval-stars.png">
+									</div>
+									<p>这已经是第六部了，一如既往地好用。美中不足得是，尾插和数据线的链接口，用过一段时间，就会有充电接触不良的问题，希望厂家将来有改进。</p>
+		
+									<p class="eval-order-info"> <span class="eval-time">2018-11-18 14:00:35</span><span>月岩白</span><span>6GB+64GB</span><span></span></p>
+		
+							</li>
+							<li>
+									<div>
+											<img src="//static.i360mall.com/mall/images/eval-stars.png">
+									</div>
+									<p>这已经是第六部了，一如既往地好用。美中不足得是，尾插和数据线的链接口，用过一段时间，就会有充电接触不良的问题，希望厂家将来有改进。</p>
+		
+									<p class="eval-order-info"> <span class="eval-time">2018-11-18 14:00:35</span><span>月岩白</span><span>6GB+64GB</span><span></span></p>
+		
+							</li>
+							<li>
+									<div>
+											<img src="//static.i360mall.com/mall/images/eval-stars.png">
+									</div>
+									<p>这已经是第六部了，一如既往地好用。美中不足得是，尾插和数据线的链接口，用过一段时间，就会有充电接触不良的问题，希望厂家将来有改进。</p>
+		
+									<p class="eval-order-info"> <span class="eval-time">2018-11-18 14:00:35</span><span>月岩白</span><span>6GB+64GB</span><span></span></p>
+		
+							</li>
+						</ul>
+					</div>
+					
+		
+				</div>
+
+	</div>
+
+
+
+</div>
+
+
+
+<!-- footer -->
+<footer class="mt20 center">
+		
+		<div class="mt20">小米商城|MIUI|米聊|多看书城|小米路由器|视频电话|小米天猫店|小米淘宝直营店|小米网盟|小米移动|隐私政策|Select Region</div>
+		<div>©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号</div> 
+		<div>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>
+
+	</footer>
+
+</body>
+</html>

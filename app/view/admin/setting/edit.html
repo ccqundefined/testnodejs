@@ -1,0 +1,49 @@
+<%- include ../public/page_header.html %>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        修改轮播图
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive input-form">
+            <form action="/admin/focus/doEdit?_csrf=<%=csrf%>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<%=list._id%>">
+                <ul>
+                    <li>分类:
+                        <select name="type" id="type">
+
+                            <option value="1" <%if(list.type==1){%>selected<%}%>>网站</option>
+                            
+                            <option value="2"<%if(list.type==2){%>selected<%}%>>APP</option>
+                            <option value="3"<%if(list.type==3){%>selected<%}%>>小程序</option>
+                        </select>
+                    </li>
+                    <li>  名&nbsp;&nbsp;称: <input type="text" name="title" value="<%=list.title%>" />
+                    </li>
+                    <li> 跳转地址: <input type="text" name="link" value="<%=list.link%>" /></li>
+                    <li> 轮播图:
+                        <input type="file" name="focus_img">
+                        <br>
+                        <img src="<%=list.focus_img%>" class="pic">
+                    </li>
+                    <li>排&nbsp;&nbsp;序:<input type="text" name="sort" value="<%=list.sort%>" /></li>
+                    <li>状&nbsp;&nbsp;态: <label><input type="radio" name="status" <%if(list.status==1){%> checked <%}%>
+                         value="1">显示</label>
+                    <label><input type="radio" name="status" 
+                        <%if(list.status==0){%> checked <%}%>
+                        value="0">隐藏</label></li>
+                    <li>
+                        <br/>
+                        <button type="submit" class="btn btn-default">提交</button>
+                    </li>
+
+                </ul>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+    </body>
+</html>
