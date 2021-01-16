@@ -1,7 +1,7 @@
 # eggxiaomi
 
-### Development
-仅供学习交流使用
+### 注意:
+此项目仅供学习交流使用
 
 ## QuickStart
 
